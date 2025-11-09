@@ -6,7 +6,7 @@ import (
 
 	"github.com/urfave/cli/v2"
 
-	yup "github.com/gloo-foo/framework"
+	gloo "github.com/gloo-foo/framework"
 	. "github.com/yupsh/split"
 )
 
@@ -78,7 +78,7 @@ func action(c *cli.Context) error {
 		arg := c.Args().Get(i)
 		// First arg is file, second is prefix
 		if i == 0 {
-			params = append(params, yup.File(arg))
+			params = append(params, gloo.File(arg))
 		} else if i == 1 {
 			params = append(params, Prefix(arg))
 		}
@@ -106,5 +106,5 @@ func action(c *cli.Context) error {
 
 	// Create and execute the split command
 	cmd := Split(params...)
-	return yup.Run(cmd)
+	return gloo.Run(cmd)
 }
